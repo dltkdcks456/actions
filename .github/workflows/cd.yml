@@ -41,4 +41,9 @@ jobs:
 
       - name: Start server using bash in WSL
         run: |
-          Start-Process powershell -ArgumentList "npx serve -s build -l 3000" -NoNewWindow
+          Start-Process powershell -ArgumentList "npx serve -s build -l 0.0.0.0:3000" -NoNewWindow
+          Start-Sleep -Seconds 10  # Wait for the server to start
+
+      - name: Test server availability (optional)
+        run: |
+          Invoke-WebRequest -Uri http://localhost:3000
