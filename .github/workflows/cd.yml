@@ -42,6 +42,7 @@ jobs:
       - name: Start server using bash in WSL
         run: |
           wsl bash -c "nohup npx serve -s build -l 3000 &"
+          exit 0
 
       - name: Test server availability (optional)
         run: |
