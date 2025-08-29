@@ -27,12 +27,14 @@ jobs:
 
       - name: Kill existing serve process (if running)
         run: |
-          if ps aux | grep 'serve -s build' > /dev/null; then
-            echo "Killing existing serve process..."
-            ps aux | grep 'serve -s build' | awk '{print $1}' | xargs kill
-          else
-            echo "No existing serve process found."
-          fi
+          # PowerShell로 프로세스 확인 및 종료
+          $process = Get-Process | Where-Object { $_.ProcessName -eq "serve" }
+          if ($process) {
+            Write-Host "Killing existing serve process..."
+            Stop-Process -Id $process.Id
+          } else {
+            Write-Host "No existing serve process found."
+          }
 
       - name: Start new server
         run: |
