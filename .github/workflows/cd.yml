@@ -1,10 +1,13 @@
 name: React Frontend CD
 
 on:
-  workflow_run:
-    workflows: ['React Frontend CI'] # ci.yml에서 설정한 이름과 동일해야 함
-    types:
-      - completed
+  push:
+    branches:
+      - main
+  # workflow_run:
+  #   workflows: ['React Frontend CI'] # ci.yml에서 설정한 이름과 동일해야 함
+  #   types:
+  #     - completed
 
 jobs:
   deploy:
@@ -38,5 +41,4 @@ jobs:
 
       - name: Start server using bash in WSL
         run: |
-          bash -c "npx serve -s build -l 3000 &"
-        shell: bash
+          Start-Process powershell -ArgumentList "npx serve -s build -l 3000" -NoNewWindow -WindowStyle Hidden
