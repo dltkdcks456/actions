@@ -38,4 +38,4 @@ jobs:
 
       - name: Start new server
         run: |
-          npx serve -s build -l 3000 &  # 백그라운드에서 서버 실행
+          nohup npx serve -s build -l 3000 &> /dev/null &
