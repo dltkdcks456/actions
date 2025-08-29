@@ -1,7 +1,5 @@
 #!/bin/bash
 npm install
-# React 앱 빌드
 npm run build  # npm run build
 echo "Current working directory: $(pwd)"
-# 빌드된 앱을 로컬 서버에서 서빙
 npx serve -s build -l 3000 &  # serve로 빌드된 앱을 실행
