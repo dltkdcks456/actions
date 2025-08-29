@@ -12,13 +12,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Print current working directory
-        run: |
-          Write-Host "Current working directory: $(pwd)"
-          Get-ChildItem -Force  # PowerShell에서 현재 디렉토리의 파일 목록 출력
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Run deploy.sh script using bash
+      - name: Build app
+        run: npm run build
+
+      - name: Start server
         run: |
-          bash ./deploy.sh  # bash로 deploy.sh를 실행
+          bash serve -s build -l 3000  # 서버를 3000번 포트에서 실행
