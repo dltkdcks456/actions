@@ -41,4 +41,4 @@ jobs:
 
       - name: Start server using bash in WSL
         run: |
-          Start-Process powershell -ArgumentList "npx serve -s build -l 3000" -NoNewWindow -WindowStyle Hidden
+          Start-Process powershell -ArgumentList "npx serve -s build -l 3000" -NoNewWindow
