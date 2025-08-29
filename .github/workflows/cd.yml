@@ -16,9 +16,9 @@ jobs:
 
       - name: Print current working directory
         run: |
-          echo "Current working directory: $(pwd)"
-          ls -la   # 현재 디렉토리의 파일 목록을 출력하여 deploy.sh가 있는지 확인
+          Write-Host "Current working directory: $(pwd)"
+          Get-ChildItem -Force  # PowerShell에서 현재 디렉토리의 파일 목록 출력
 
-      - name: Deploy to local server
+      - name: Run deploy.sh script using bash
         run: |
-          bash ./deploy.sh
+          bash ./deploy.sh  # bash로 deploy.sh를 실행
