@@ -41,7 +41,7 @@ jobs:
 
       - name: Start server using bash in WSL
         run: |
-           Start-Process powershell -ArgumentList "npx serve -s build -l 0.0.0.0:3000" -NoNewWindow
+          Start-Process powershell -ArgumentList "npx serve -s build -l 0.0.0.0:3000" -NoNewWindow
           exit 0  # Exit the GitHub Actions session, allowing the server to continue running
 
       - name: Test server availability (optional)
