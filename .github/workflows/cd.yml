@@ -25,6 +25,15 @@ jobs:
       - name: Build app
         run: npm run build
 
-      - name: Start server
+      - name: Kill existing serve process (if running)
         run: |
-          npx serve -s build -l 3000  # 서버를 3000번 포트에서 실행
+          if ps aux | grep 'serve -s build' > /dev/null; then
+            echo "Killing existing serve process..."
+            ps aux | grep 'serve -s build' | awk '{print $1}' | xargs kill
+          else
+            echo "No existing serve process found."
+          fi
+
+      - name: Start new server
+        run: |
+          npx serve -s build -l 3000 &  # 백그라운드에서 서버 실행
