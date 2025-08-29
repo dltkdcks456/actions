@@ -36,6 +36,7 @@ jobs:
             Write-Host "No existing serve process found."
           }
 
-      - name: Start new server
+      - name: Start server using bash in WSL
         run: |
-          Start-Process "npx" -ArgumentList "serve -s build -l 3000"
+          bash -c "npx serve -s build -l 3000 &"
+        shell: bash
