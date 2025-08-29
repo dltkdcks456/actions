@@ -3,7 +3,7 @@ name: React Frontend CD
 on:
   workflow_run:
     workflows:
-      - 'React Frontend CI'
+      - 'React Frontend CI' # ci.yml에서 설정한 이름과 동일해야 함
     types:
       - completed
 
@@ -11,9 +11,9 @@ jobs:
   deploy:
     runs-on: self-hosted
 
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Deploy to local server
-      run: ./deploy.sh
+      - name: Deploy to local server
+        run: ./deploy.sh
