@@ -14,6 +14,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Print current working directory
+        run: |
+          echo "Current working directory: $(pwd)"
+          ls -la   # 현재 디렉토리의 파일 목록을 출력하여 deploy.sh가 있는지 확인
+
       - name: Deploy to local server
         run: |
           bash ./deploy.sh
