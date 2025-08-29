@@ -38,4 +38,4 @@ jobs:
 
       - name: Start new server
         run: |
-          nohup npx serve -s build -l 3000 &> /dev/null &
+          Start-Process "npx" -ArgumentList "serve -s build -l 3000"
